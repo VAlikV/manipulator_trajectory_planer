@@ -15,6 +15,7 @@ namespace trajectory
     {
         private:
             std::list<Eigen::Array<double,N_JOINTS,1>> points_;
+            bool done_ = false;
 
             int checkPoints(const Eigen::Array<double,N_JOINTS,1> &delta);
 

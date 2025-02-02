@@ -28,13 +28,27 @@ bool Trajectory::push(const Eigen::Array<double,7,1> &thetta)
         points_.push_back(thetta);
     }
 
+    if (done_ == true)
+    {
+        points_.pop_front();
+        done_ = false;
+    }
     return true;
 }
 
 bool Trajectory::pop(Eigen::Array<double,7,1> &thetta)
 {
     thetta = points_.front();
-    points_.pop_front();
+
+    if (points_.size() == 1)
+    {
+        done_ = true;
+    }
+    else
+    {
+        done_ = false;
+        points_.pop_front();
+    }
     return true;
 }
 

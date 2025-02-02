@@ -33,9 +33,14 @@ int main()
     for (int i = 0; i < n; ++i)
     {
         tr.pop(temp);
-        // std::cout << temp.transpose()*180/M_PI << std::endl;
+        std::cout << temp.transpose()*180/M_PI << std::endl;
     }
 
+    std::cout << std::endl;
+    std::cout << "Размер2: " << tr.size() << std::endl << std::endl;
+    
+    tr.pop(temp);
 
+    std::cout << "Размер: " << temp.transpose()*180/M_PI << std::endl << std::endl;
 
 }
