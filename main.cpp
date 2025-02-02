@@ -16,6 +16,8 @@ int main()
         5*M_PI/180,
         5*M_PI/180;
 
+    // ======================================================================================
+
     trajectory::Trajectory tr(first);
 
     clock_t last_time = clock();
@@ -23,6 +25,8 @@ int main()
     tr.push(second);
 
     std::cout << "Время: " << (((double)(clock() - last_time))/CLOCKS_PER_SEC)*1000 << std::endl;
+
+    // ======================================================================================
 
     size_t n = tr.size();
 
@@ -36,6 +40,8 @@ int main()
         std::cout << temp.transpose()*180/M_PI << std::endl;
     }
 
+    // ======================================================================================
+
     std::cout << std::endl;
     std::cout << "Размер2: " << tr.size() << std::endl << std::endl;
     
@@ -43,4 +49,33 @@ int main()
 
     std::cout << "Размер: " << temp.transpose()*180/M_PI << std::endl << std::endl;
 
+    // ======================================================================================
+
+    Eigen::Array<double,7,1> third;
+    third << 5.5*M_PI/180,
+        5.5*M_PI/180,
+        5.5*M_PI/180,
+        5.5*M_PI/180,
+        5.5*M_PI/180,
+        5.5*M_PI/180,
+        5.5*M_PI/180;
+
+    last_time = clock();
+
+    tr.push(third);
+    tr.push(third+0.5*M_PI/180);
+
+    std::cout << "Время: " << (((double)(clock() - last_time))/CLOCKS_PER_SEC)*1000 << std::endl;
+
+    // ======================================================================================
+
+    n = tr.size();
+
+    std::cout << "Размер: " << n << std::endl << std::endl;
+
+    for (int i = 0; i < n; ++i)
+    {
+        tr.pop(temp);
+        std::cout << temp.transpose()*180/M_PI << std::endl;
+    }
 }
